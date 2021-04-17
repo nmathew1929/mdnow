@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#
+filename=$*
+filename=${filename// /_}
+
+if [[ "$filename" != *.md ]]	
+then
+	filename=${filename}.md
+fi
+	
+whereami=$(pwd)
+fullpath="${whereami}/${filename}"
+imagepath="${whereami}/images"
+
+
+#image folder check
+if [[ ! -d "$imagepath" ]];
+then
+	echo "/images directory being created in path $whereami"
+	mkdir $imagepath
+fi
+
+
+#file check
+if [[ -z $@ ]]; then #if $@ is null we just open typora
+	echo "Opening typora"
+	typora . & 
+
+elif [[ -f "$fullpath" ]]; then 
+	echo "Opening file $filename"
+	typora $filename & 
+else
+	echo "$fullpath does not exist, creating file $filename"
+	touch $filename
+	typora $filename &
+fi
+
