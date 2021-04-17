@@ -1,4 +1,4 @@
-Installation
+# Installation
 
 - need to have typora installed on your computer linux machine. Install it from here: https://typora.io/
 
