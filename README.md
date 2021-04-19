@@ -2,6 +2,12 @@
 
 - need to have typora installed on your computer linux machine. Install it from here: https://typora.io/
 
+- make the mdnow executable
+
+  - ```bash
+    chmod +x mdnow
+    ```
+
 - move the file to your bin folder
 
   - ```bash
@@ -10,7 +16,7 @@
 
 
 
-# Usage: 
+# Usage:
 
 ```bash
 mdnow <filename>

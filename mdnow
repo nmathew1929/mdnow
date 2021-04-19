@@ -1,8 +1,21 @@
 #!/bin/bash
 
-#
-filename=$*
-filename=${filename// /_}
+passedIn=$*
+whereami=$(pwd)
+fullpath="${whereami}/${passedIn}"
+
+#https://superuser.com/questions/1068031/replace-backslash-with-forward-slash-in-a-variable-in-bash
+#fixing old string filenames
+if [[ -f "$fullpath" && "$passedIn" = "[[:space:]]+" ]]; then 
+	new_filename=${passedIn// /_}
+	#new_filename=${new_filename//\&/'and'}
+	mv "$fullpath" "${whereami}/${new_filename}"
+	echo "changing name to correct format"
+fi
+
+
+filename=${passedIn// /_} #repeating code
+#filename=${filename//&/'and'}
 
 if [[ "$filename" != *.md ]]	
 then
